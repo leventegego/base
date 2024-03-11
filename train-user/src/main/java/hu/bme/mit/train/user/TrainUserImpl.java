@@ -3,6 +3,8 @@ package hu.bme.mit.train.user;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainUser;
 
+// branch-b
+
 public class TrainUserImpl implements TrainUser {
 
 	private TrainController controller;
