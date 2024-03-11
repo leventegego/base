@@ -5,6 +5,8 @@ import hu.bme.mit.train.interfaces.TrainUser;
 
 // branch a + branch-b
 
+forditasi hiba
+
 public class TrainUserImpl implements TrainUser {
 
 	private TrainController controller;
