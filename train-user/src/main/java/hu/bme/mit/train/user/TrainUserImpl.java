@@ -5,7 +5,6 @@ import hu.bme.mit.train.interfaces.TrainUser;
 
 // branch a + branch-b
 
-forditasi hiba
 
 public class TrainUserImpl implements TrainUser {
 
@@ -42,7 +41,7 @@ public class TrainUserImpl implements TrainUser {
 	public void setEmergencyBreak(boolean val)
 	{
 		this.emergencyBreak = val;
-
+		controller.setEmergencyBreak(val);
 	}
 
 
