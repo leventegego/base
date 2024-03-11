@@ -1,6 +1,7 @@
 package hu.bme.mit.train.controller;
 
 import hu.bme.mit.train.interfaces.TrainController;
+import hu.bme.mit.train.interfaces.TrainSensor;
 
 public class TrainControllerImpl implements TrainController {
 
@@ -9,6 +10,7 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 
 	private boolean breaking = false;
+	TrainSensor sensor;
 
 	@Override
 	public void followSpeed() {
@@ -24,6 +26,8 @@ public class TrainControllerImpl implements TrainController {
 
 		enforceSpeedLimit();
 		enforceBreaking();
+
+		sensor.logSpeed(referenceSpeed, step);
 	}
 
 	@Override
@@ -35,7 +39,14 @@ public class TrainControllerImpl implements TrainController {
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 		enforceSpeedLimit();
+		sensor.logSpeed(referenceSpeed, step);
 		
+	}
+
+	@Override
+	public void setSensor(TrainSensor sensor)
+	{
+		this.sensor = sensor;
 	}
 
 	private void enforceSpeedLimit() {
@@ -56,10 +67,18 @@ public class TrainControllerImpl implements TrainController {
 	}
 
 	@Override
+	public int getJoystickPosition()
+	{
+		return step;
+	}
+
+	@Override
 	public void setEmergencyBreak(boolean val)
 	{
 		breaking = val;
 		enforceBreaking();
+		sensor.logSpeed(referenceSpeed, step);
+
 	}
 
 }

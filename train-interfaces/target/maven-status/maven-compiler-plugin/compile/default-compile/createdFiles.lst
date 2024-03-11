@@ -1,3 +1,4 @@
+hu\bme\mit\train\interfaces\LogEntry.class
 hu\bme\mit\train\interfaces\TrainController.class
 hu\bme\mit\train\interfaces\TrainSensor.class
 hu\bme\mit\train\interfaces\TrainUser.class

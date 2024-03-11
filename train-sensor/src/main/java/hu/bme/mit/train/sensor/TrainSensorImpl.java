@@ -3,6 +3,13 @@ package hu.bme.mit.train.sensor;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
+import hu.bme.mit.train.interfaces.LogEntry;
+
+import com.google.common.collect.Table;
+import com.google.common.collect.HashBasedTable;
+import java.time.*; 
+import java.time.temporal.*; 
+
 
 public class TrainSensorImpl implements TrainSensor {
 
@@ -10,8 +17,11 @@ public class TrainSensorImpl implements TrainSensor {
 	private TrainUser user;
 	private int speedLimit = 5;
 
+	Table<Integer, Integer, LogEntry> logTable = HashBasedTable.create();
+
 	public TrainSensorImpl(TrainController controller, TrainUser user) {
 		this.controller = controller;
+		controller.setSensor(this);
 		this.user = user;
 	}
 
@@ -24,6 +34,25 @@ public class TrainSensorImpl implements TrainSensor {
 	public void overrideSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 		controller.setSpeedLimit(speedLimit);
+	}
+
+	@Override
+	public void logSpeed(int speed, int pos)
+	{
+		int h = LocalTime.now().getHour();
+		int m = LocalTime.now().getMinute();
+
+		LogEntry entry = new LogEntry();
+		entry.pos = pos;
+		entry.speed = speed;
+
+		logTable.put(h, m, entry);
+	}
+
+	@Override
+	public Table<Integer, Integer, LogEntry> getLog()
+	{
+		return logTable;
 	}
 
 }
