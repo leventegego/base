@@ -10,5 +10,8 @@ public interface TrainUser {
 	void overrideJoystickPosition(int joystickPosition);
 	void setEmergencyBreak(boolean val);
 
+	void setAlarmState(boolean alarmState);
+	boolean getAlarmState();
+
 
 }

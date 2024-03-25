@@ -45,4 +45,12 @@ public class TrainUserImpl implements TrainUser {
 	}
 
 
+	boolean alarmState = false;
+
+	@Override
+	public void setAlarmState(boolean alarmState) { alarmState = true; }
+	@Override
+	public boolean getAlarmState() { return alarmState; }
+
+
 }
