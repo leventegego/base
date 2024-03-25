@@ -3,6 +3,8 @@ package hu.bme.mit.train.controller;
 import hu.bme.mit.train.interfaces.TrainController;
 import hu.bme.mit.train.interfaces.TrainSensor;
 
+import java.lang.Thread;
+
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
@@ -11,6 +13,15 @@ public class TrainControllerImpl implements TrainController {
 
 	private boolean breaking = false;
 	TrainSensor sensor;
+
+	public void run(int timeUnit_ms, int iterations)
+	{
+		for(int i = 0; i < iterations)
+		{
+			followSpeed()
+			Thread.sleep(timeUnit_ms);
+		}
+	}
 
 	@Override
 	public void followSpeed() {
