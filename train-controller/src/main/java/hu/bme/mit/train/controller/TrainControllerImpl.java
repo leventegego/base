@@ -16,7 +16,7 @@ public class TrainControllerImpl implements TrainController {
 
 	public void run(int timeUnit_ms, int iterations)
 	{
-		for(int i = 0; i < iterations)
+		for(int i = 0; i < iterations; ++i)
 		{
 			followSpeed()
 			Thread.sleep(timeUnit_ms);
