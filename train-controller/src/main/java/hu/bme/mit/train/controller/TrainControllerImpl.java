@@ -12,6 +12,12 @@ public class TrainControllerImpl implements TrainController {
 	private boolean breaking = false;
 	TrainSensor sensor;
 
+	public void run(int timeUnit_ms, int iteration) throws InterruptedException {
+		for (int i=0; i< iteration; i++){
+			followSpeed();
+			Thread.sleep(timeUnit_ms);
+		}
+	}
 	@Override
 	public void followSpeed() {
 		if (referenceSpeed < 0) {
