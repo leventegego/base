@@ -14,11 +14,11 @@ public class TrainControllerImpl implements TrainController {
 	private boolean breaking = false;
 	TrainSensor sensor;
 
-	public void run(int timeUnit_ms, int iterations)
+	public void run(int timeUnit_ms, int iterations) throws InterruptedException
 	{
 		for(int i = 0; i < iterations; ++i)
 		{
-			followSpeed()
+			followSpeed();
 			Thread.sleep(timeUnit_ms);
 		}
 	}
